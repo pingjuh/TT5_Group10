@@ -2,12 +2,11 @@ const mongoose = require("mongoose");
 
 const ExpenseSchema = mongoose.Schema({
   id: {
-    type: Number,
-    required: true,
+    type: Number
   },
   project_id: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "projects",
+    type: Number,
+    required: true,
   },
   category_id: {
     type: Number,
@@ -45,5 +44,5 @@ const ExpenseSchema = mongoose.Schema({
   },
 });
 
-module.exports = moongoose.model("expense", ExpenseSchema);
+module.exports = mongoose.model("expense", ExpenseSchema);
 

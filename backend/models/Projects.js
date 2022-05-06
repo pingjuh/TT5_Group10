@@ -6,8 +6,8 @@ const ProjectSchema = mongoose.Schema({
     required: true,
   },
   user_id: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "users",
+    type: Number,
+    required: true,
   },
   name: {
     type: String,
