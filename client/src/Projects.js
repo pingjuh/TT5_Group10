@@ -17,7 +17,10 @@ function Projects() {
 
     async function getProjects(){
         axios
-        .post(`${process.env.REACT_APP_BACKEND_URL}/projects/allProjects`, {id:localStorage.getItem("id")}
+        .post(`${process.env.REACT_APP_BACKEND_URL}/projects/allProjects`, 
+        {id:localStorage.getItem("id")}
+        // {id:"1"}
+
         )
         .then((response) => {
           console.log(response.data)
