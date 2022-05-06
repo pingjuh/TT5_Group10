@@ -89,7 +89,7 @@ const Signin = () => {
                     required 
                 />
 
-                <Button sx={{mt:5}} colorScheme='teal'>Sign In</Button>
+                <Button type="submit" sx={{mt:5}} colorScheme='teal'>Sign In</Button>
             </form>
             <p>
                         New User?<br />
