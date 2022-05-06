@@ -53,6 +53,7 @@ function ExpensesRenderer(props) {
   return (
   <>
     <Heading sx={{pl:10,pt:10, pb:10}}>Expenses</Heading>
+    <Button sx={{m:5}} colorScheme='teal' border="0px" onClick={()=>{navigate('/')}}>Back</Button>
     <Box sx={{m:15,maxWidth:"70%"}}>
     {projectData && <ExpensesTable data={projectData}/>}
     </Box>

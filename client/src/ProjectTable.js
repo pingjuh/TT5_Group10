@@ -47,7 +47,10 @@ function ProjectTable(props) {
             Header: 'Action',
             Cell: ({ cell }) => (
                 <button value="View Project"
-                onClick={()=>{navigate('/project/1')}}
+                onClick={()=>{
+                  navigate(`/project/${cell.row.values.id}`)
+              console.log(cell.row.values.id)
+              }}
                 >
                   View Project
                 </button>

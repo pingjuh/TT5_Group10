@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import axios from 'axios'
 
 const AddExpense = ({ onAdd }) => {
     {/*const [id, setId] = useState('')*/}
@@ -7,29 +8,53 @@ const AddExpense = ({ onAdd }) => {
     const [name, setName] = useState('')
     const [description, setDescription] = useState('')
     const [amount, setAmount] = useState('')
-    const [createdAt, setCreatedAt] = useState('')
     const [createdBy, setCreatedBy] = useState('')
-    const [updatedAt, setUpdatedAt] = useState('')
     const [updatedBy, setUpdatedBy] = useState('')
+
+
+
+    const add = async expense => {
+        const config = {  
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+        try {
+          const res = await axios.post('http://localhost:3001/expenses', expense, config);
+        } catch (err) {
+          console.log(err);
+        }
+    }
+    
+    const onSubmit = (e) => {
+        e.preventDefault()
+        add({ projectId, categoryId, name, description, amount, createdBy, updatedBy });
+        setProjectId('');
+        setCategoryId('');
+        setName('');
+        setDescription('');
+        setAmount('');
+        setCreatedBy('');
+        setUpdatedBy('');
+    }
 
     return (
         <form 
-        // onSubmit={onSubmit}
+          onSubmit={onSubmit}
         >
           <div>
             <label>Id</label>
           </div>
-
+          
           <div>
-            <label for="projectId">Project Id</label>
-            <select projectId="projectId">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-            </select>
+            <label>ProjectID: </label>
+              <input
+              type='text'
+              placeholder='Add ProjectID'
+              value={projectId}
+              onChange={(e) => setProjectId(e.target.value)}
+              />
           </div>
 
           <div>
@@ -63,32 +88,12 @@ const AddExpense = ({ onAdd }) => {
           </div>
 
           <div>
-            <label>Created at: </label>
-              <input
-              type='text'
-              placeholder='yyyymmdd 00:00:00'
-              value={createdAt}
-              onChange={(e) => setCreatedAt(e.target.value)}
-              />
-          </div>
-
-          <div>
             <label>Created by: </label>
               <input
               type='text'
               placeholder='Add user name'
               value={createdBy}
               onChange={(e) => setCreatedBy(e.target.value)}
-              />
-          </div>
-
-          <div>
-            <label>Updated at: </label>
-              <input
-              type='text'
-              placeholder='yyyymmdd 00:00:00'
-              value={updatedAt}
-              onChange={(e) => setUpdatedAt(e.target.value)}
               />
           </div>
 
@@ -104,6 +109,7 @@ const AddExpense = ({ onAdd }) => {
 
           <input type='submit' value='Save Expense' />
     </form>
+
   )
 }
 
