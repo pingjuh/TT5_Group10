@@ -1,5 +1,6 @@
 import React from "react";
 import { useState, useEffect } from 'react'
+import { useNavigate } from "react-router-dom";
 import { forwardRef } from 'react';
 import { Box, Heading, Flex, Text, Button, MenuList } from "@chakra-ui/react";
 import { Table, Thead, Tbody, Tr, Th, Td, chakra } from '@chakra-ui/react'
@@ -9,6 +10,8 @@ import MaterialTable from 'material-table'
 import axios from 'axios';
 
 function Projects() {
+    const navigate = useNavigate();
+    const [projectData, setProjectData] = useState()
 
     async function getProjects(){
         axios
@@ -16,6 +19,7 @@ function Projects() {
         )
         .then((response) => {
           console.log(response.data)
+          setProjectData(response.data)
          
         })
         .catch((err) => {
@@ -63,7 +67,7 @@ function Projects() {
             Header: 'Action',
             Cell: ({ cell }) => (
                 <button value="View Project"
-                onClick={()=>{console.log("ABC")}}
+                onClick={()=>{navigate('/expenses/1')}}
                 >
                   View Project
                 </button>
@@ -78,7 +82,7 @@ function Projects() {
         headerGroups,
         rows,
         prepareRow,
-      } = useTable({ columns, data })
+      } = useTable({ columns, projectData })
     
 
 
