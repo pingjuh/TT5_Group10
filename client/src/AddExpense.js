@@ -29,7 +29,7 @@ const AddExpense = ({ onAdd }) => {
     
     const onSubmit = (e) => {
         e.preventDefault()
-        add({ project_id, category_id, name, description, amount, created_by, updated_by })
+        add({ id, project_id, category_id, name, description, amount, created_by, updated_by })
         setProjectId('');
         setCategoryId('');
         setName('');
