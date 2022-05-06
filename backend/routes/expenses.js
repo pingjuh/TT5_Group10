@@ -43,13 +43,14 @@ router.post('/', async (req, res) => {
   }
 });
 
-// @route     PUT/expenses
+// @route     PUT/expenses/:id
 // @desc      Update expense
 // @access    Public
 
 router.put('/:_id', async (req, res) => {
-  const { project_id, category_id, name, description, amount, created_at, created_by, updated_at, updated_by } = req.body;
+  const { project_id, category_id, name, description, amount, created_at, created_by, updated_by } = req.body;
   const expenseField = {};
+  expenseField.updated_at = Date().toLocaleString();
   if (project_id) expenseField.project_id = project_id;
   if (category_id) expenseField.category_id = category_id;
   if (name) expenseField.name = name;
@@ -57,7 +58,6 @@ router.put('/:_id', async (req, res) => {
   if (amount) expenseField.amount = amount;
   if (created_at) expenseField.created_at = created_at;
   if (created_by) expenseField.created_by = created_by;
-  if (updated_at) expenseField.updated_at = updated_at;
   if (updated_by) expenseField.updated_by = updated_by;
   try {
     let expense = await Expense.findById(req.params._id);
@@ -73,6 +73,22 @@ router.put('/:_id', async (req, res) => {
     res.status(500).send('Server Error');
   }
 });
+
+// @route     DELETE/expenses/:_id
+// @desc      Delete expense
+// @access    Public
+router.delete('/:_id', async (req, res) => {
+  try {
+    const expense = await Expense.findById(req.params._id);
+    if (!expense) return res.status(404).json({ msg: 'Expense not found' });
+    await Expense.findByIdAndRemove(req.params._id);
+    res.json({ msg: 'Expense removed' });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
+
 
 
 module.exports = router;
