@@ -22,7 +22,6 @@ function App() {
       {loggedIn &&
       <>
       <NavBar />
-      <h1> User is logged in</h1>
       <Projects />
       </>}
     </main>

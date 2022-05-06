@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-
+import { Box, Heading, Flex, Text, Button, MenuList } from "@chakra-ui/react";
 function Projects() {
 
   
@@ -9,7 +9,7 @@ function Projects() {
 
   return (
   <>
-    <h1>Projects Page</h1>
+    <Heading sx={{pl:10,pt:10}}>Projects Page</Heading>
   </>
   );
 }
