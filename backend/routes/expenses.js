@@ -19,8 +19,8 @@ router.get('/', async (req, res) => {
 });
 
 // @route     POST /expenses
-// @desc      Add new contact
-// @access    Private
+// @desc      Add new expense
+// @access    Public
 router.post('/', async (req, res) => {
   try {
     const newExpense = new Expense({
@@ -36,6 +36,37 @@ router.post('/', async (req, res) => {
       updated_by: req.body.updated_by,
     });
     const expense = await newExpense.save();
+    res.json(expense);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
+
+// @route     PUT/expenses
+// @desc      Update expense
+// @access    Public
+
+router.put('/:_id', async (req, res) => {
+  const { project_id, category_id, name, description, amount, created_at, created_by, updated_at, updated_by } = req.body;
+  const expenseField = {};
+  if (project_id) expenseField.project_id = project_id;
+  if (category_id) expenseField.category_id = category_id;
+  if (name) expenseField.name = name;
+  if (description) expenseField.description = description;
+  if (amount) expenseField.amount = amount;
+  if (created_at) expenseField.created_at = created_at;
+  if (created_by) expenseField.created_by = created_by;
+  if (updated_at) expenseField.updated_at = updated_at;
+  if (updated_by) expenseField.updated_by = updated_by;
+  try {
+    let expense = await Expense.findById(req.params._id);
+    if (!expense) return res.status(404).json({ msg: 'Expense not found' });
+
+    expense = await Expense.findByIdAndUpdate(
+      req.params._id,
+      { $set: expenseField },
+    );
     res.json(expense);
   } catch (err) {
     console.error(err.message);
