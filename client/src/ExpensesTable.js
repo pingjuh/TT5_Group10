@@ -56,6 +56,10 @@ function ExpensesTable(props) {
             accessor: 'name',
           },
           {
+            Header: 'Amount',
+            accessor: 'amount',
+          },
+          {
             Header: 'Description',
             accessor: 'description',
           },{
