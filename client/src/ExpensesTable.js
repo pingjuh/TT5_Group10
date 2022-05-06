@@ -1,12 +1,12 @@
 import React from "react";
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 import { forwardRef } from 'react';
 import { Box, Heading, Flex, Text, Button, MenuList } from "@chakra-ui/react";
-import { Table, Thead, Tbody, Tr, Th, Td, chakra } from '@chakra-ui/react'
-import { TriangleDownIcon, TriangleUpIcon } from '@chakra-ui/icons'
-import { useTable, useSortBy } from 'react-table'
-import MaterialTable from 'material-table'
+import { Table, Thead, Tbody, Tr, Th, Td, chakra } from '@chakra-ui/react';
+import { TriangleDownIcon, TriangleUpIcon } from '@chakra-ui/icons';
+import { useTable, useSortBy } from 'react-table';
+import MaterialTable from 'material-table';
 import axios from 'axios';
 
 function ExpensesTable(props) {

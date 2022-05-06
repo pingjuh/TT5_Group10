@@ -63,6 +63,10 @@ const Signin = () => {
             ) : (
         <section>
             <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
+            <form onSubmit={handleSubmit}>
+                <h1>Sign In</h1>
+            </form>
+            
             <hi>Sign In</hi>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="username">Username:</label>
@@ -73,6 +77,7 @@ const Signin = () => {
                     autoComplete="off"
                     onChange={(e) => setUser(e.target.value)}
                     value={user}
+                    placeholder="Enter your username"
                     required 
                 />
 
@@ -82,6 +87,7 @@ const Signin = () => {
                     id="password"
                     onChange={(e) => setPw(e.target.value)}
                     value={pw}
+                    placeholder="Enter your password"
                     required 
                 />
 
