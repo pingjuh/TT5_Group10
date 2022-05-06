@@ -77,9 +77,10 @@ router.put('/:_id', async (req, res) => {
 // @route     DELETE/expenses/:_id
 // @desc      Delete expense
 // @access    Public
-router.delete('/:_id', async (req, res) => {
+router.post('/delete2', async (req, res) => {
   try {
-    const expense = await Expense.findById(req.params._id);
+    console.log(req.body)
+    const expense = await Expense.findOneAndDelete({id:req.body.id});
     if (!expense) return res.status(404).json({ msg: 'Expense not found' });
     await Expense.findByIdAndRemove(req.params._id);
     res.json({ msg: 'Expense removed' });

@@ -11,6 +11,25 @@ import axios from 'axios';
 
 function ExpensesTable(props) {
     const navigate = useNavigate();
+    async function handleDelete(data){
+        console.log(data)
+        axios
+        .post(`${process.env.REACT_APP_BACKEND_URL}/expenses/delete2`,
+        {id:data.id}
+
+
+        )
+        .then((response) => {
+          console.log(response.data)
+        //   setProjectData(response.data)
+         
+        })
+        .catch((err) => {
+
+            alert("Error")
+        })}
+
+    
 
 
     const data = React.useMemo(
@@ -46,10 +65,16 @@ function ExpensesTable(props) {
           },{
             Header: 'Action',
             Cell: ({ cell }) => (
-                <button value="View Project"
-                onClick={()=>{navigate('/project/1')}}
+                <button value="Delete Expense"
+                onClick={()=>{
+                    // navigate('/project/1')
+                     console.log(cell.row.values)
+                     handleDelete(cell.row.values)
+                     window.location.reload()
+                    
+                }}
                 >
-                  View Project
+                  Delete Expense
                 </button>
               )
           },
