@@ -11,7 +11,6 @@ import axios from 'axios';
 
 function ProjectTable(props) {
     const navigate = useNavigate();
-    const [projectData, setProjectData] = useState()
 
 
     const data = React.useMemo(
@@ -64,7 +63,7 @@ function ProjectTable(props) {
         headerGroups,
         rows,
         prepareRow,
-      } = useTable({ columns, tableData })
+      } = useTable({ columns, data:tableData })
     console.log(props)
 
 
