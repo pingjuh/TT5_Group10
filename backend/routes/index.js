@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 const mongoose = require("mongoose");
 const cors = require("cors");
+const app = require('../app');
 require("dotenv").config();
 router.use(cors());
 
@@ -18,6 +19,5 @@ mongoose
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
-
 
 module.exports = router;
