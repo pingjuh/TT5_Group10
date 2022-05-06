@@ -52,12 +52,8 @@ function ExpensesTable(props) {
             accessor: 'id', // accessor is the "key" in the data
           },
           {
-            Header: 'Project Name',
+            Header: 'Expense Name',
             accessor: 'name',
-          },
-          {
-            Header: 'Budget',
-            accessor: 'budget',
           },
           {
             Header: 'Description',
