@@ -1,5 +1,6 @@
 import { useRef, useState, useEffect, useContext } from "react"
 import { Link } from 'react-router-dom';
+import { Box, Heading, Flex, Text, Button, MenuList, Input } from "@chakra-ui/react";
 import axios from 'axios';
 
 const SIGNIN_URL = '/signin'
@@ -63,10 +64,12 @@ const Signin = () => {
             ) : (
         <section>
             <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
-            <hi>Sign In</hi>
+            <Box  sx={{m:5}}>
+               <Heading>Sign In</Heading>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="username">Username:</label>
-                <input 
+                <Input 
+                    sx={{mb:5}}
                     type ="text"
                     id="username"
                     ref={userRef}
@@ -77,7 +80,8 @@ const Signin = () => {
                 />
 
 <label htmlFor="password">Password:</label>
-                <input 
+                <Input 
+
                     type ="password"
                     id="password"
                     onChange={(e) => setPw(e.target.value)}
@@ -85,7 +89,7 @@ const Signin = () => {
                     required 
                 />
 
-                <button>Sign In</button>
+                <Button sx={{mt:5}} colorScheme='teal'>Sign In</Button>
             </form>
             <p>
                         New User?<br />
@@ -93,6 +97,7 @@ const Signin = () => {
                                 <Link to= "/register">Sign Up</Link>
                         </span>
                     </p>
+            </Box>
         </section>
             )}
         </>
