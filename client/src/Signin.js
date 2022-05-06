@@ -63,10 +63,6 @@ const Signin = () => {
             ) : (
         <section>
             <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
-            <form onSubmit={handleSubmit}>
-                <h1>Sign In</h1>
-            </form>
-            
             <hi>Sign In</hi>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="username">Username:</label>
