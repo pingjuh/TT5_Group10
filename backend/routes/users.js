@@ -13,10 +13,14 @@ router.post('/login', async function(req, res, next) {
     const filter={username: req.body.username, password: req.body.password}
     try{
         const users = await User.findOne(filter)
+        if (!users){
+            // if username and password does not exist
+            return res.sendStatus(403)
+        }
         return res.send({users, "jwt": generateToken(users)})
     }catch (err) {
         console.log(err);
-        return res.status(400).json({
+        return res.status(403).json({
           error: true,
           message: "Error",
         });
@@ -52,8 +56,10 @@ function generateToken(user) {
     if (!user) return null;
   
     const u = {
-      username: user.id,
-      role: user.username,
+      id: user.id,
+      username: user.username,
+      name: user.name,
+      role: user.appointment,
     };
 
     return jwt.sign(u, process.env.jwtSecret, {
