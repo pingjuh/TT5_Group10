@@ -24,16 +24,16 @@ router.get('/', async (req, res) => {
 router.post('/', async (req, res) => {
   try {
     const newExpense = new Expense({
-      id,
-      project_id,
-      category_id,
-      name,
-      description,
-      amount,
-      created_at,
-      created_by,
-      updated_at,
-      updated_by
+      id : req.body.id,
+      project_id: req.body.project_id,
+      category_id: req.body.category_id,
+      name: req.body.name,
+      description: req.body.description,
+      amount: req.body.amount,
+      created_at: req.body.created_at,
+      created_by: req.body.created_by,
+      updated_at: req.body.updated_at,
+      updated_by: req.body.updated_by,
     });
     const expense = await newExpense.save();
     res.json(expense);
