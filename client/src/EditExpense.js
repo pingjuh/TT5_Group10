@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from "react-router-dom";
 
 const EditExpense = () => {
   return (
@@ -6,10 +7,10 @@ const EditExpense = () => {
         <div>
             Edit Expense
         </div>
-        <Button>
+        <Link to="/projects"><Button>
             Edit
-        </Button>
-        
+        </Button></Link>
+
         <Button>
             Delete
         </Button>
