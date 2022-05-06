@@ -3,31 +3,45 @@ const router = express.Router();
 const Expense =  require('../models/Expense')
 // const Category =  require('../models/Category')
 /* GET users listing. */
-router.get('/', function(req, res, next) {
 
-  res.send('expense route');
+// @route     GET /expenses
+// @desc      Get all project expenses
+// @access    Public
+
+router.get('/', async (req, res) => {
+  try {
+    const expenses = await Expense.find();
+    res.json(expenses);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
 });
 
-    
-  router.post('/allExpense', async function(req, res, next) {
-      try{
-        const projectid = req.body.id
-        console.log(projectid)
-        const expenses = await Expense.find({project_id: projectid})
-        console.log(expenses)
-        // const categoryid = req.body.id
-        // console.log(categoryid)
-        // const category = await Expense.find({category_id: categoryid})
-        // console.log(category)
-        return res.send(expenses)
-      }catch (err) {
-        console.log(err);
-        return res.status(400).json({
-          error: true,
-          message: "Failed to save",
-        });
-      }
-      return res.send("No projects yet")
+// @route     POST /expenses
+// @desc      Add new contact
+// @access    Private
+router.post('/', async (req, res) => {
+  try {
+    const newExpense = new Expense({
+      id,
+      project_id,
+      category_id,
+      name,
+      description,
+      amount,
+      created_at,
+      created_by,
+      updated_at,
+      updated_by
+    });
+    const expense = await newExpense.save();
+    res.json(expense);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
 });
+
 
 module.exports = router;

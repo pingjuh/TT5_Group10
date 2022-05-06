@@ -6,8 +6,8 @@ const ExpenseSchema = mongoose.Schema({
     required: true,
   },
   project_id: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "projects",
+    type: Number,
+    required: true,
   },
   category_id: {
     type: Number,
