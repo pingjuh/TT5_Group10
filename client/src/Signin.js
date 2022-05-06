@@ -1,10 +1,11 @@
 import { useRef, useState, useEffect, useContext } from "react"
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 const SIGNIN_URL = '/signin'
 
 const Signin = () => {
-    const { setAuth } = useContext(AuthContext);
+    // const { setAuth } = useContext();
     const userRef = useRef();
     const errRef = useRef();
 
@@ -23,14 +24,34 @@ const Signin = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(user, pwd);
+        console.log(user, pw);
         setUser('');
-        setPwd('');
-        setSuccess(true);
+        setPw('');
+        
+
+        const payload = {username: user, password: pw}
+
+        axios
+        .post(`${process.env.REACT_APP_BACKEND_URL}/auth/login`, 
+        payload
+        )
+        .then((response) => {
+            console.log(response.data)
+            localStorage.setItem('jwt', response.data.jwt)
+            localStorage.setItem('name', response.data.users.name)
+            localStorage.setItem('id', response.data.users.id)
+            localStorage.setItem('appointment', response.data.users.appointment)
+            setSuccess(true);
+        })
+        .catch((err) => {
+            alert("Username or Password is incorrect, try again")
+        });
+        
     }
 
     return (
         <>
+        <h1>{pw}</h1>
             {success ? (
                 <section>
                     <h1>You are logged in!</h1>
