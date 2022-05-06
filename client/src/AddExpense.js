@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import axios from 'axios'
 
 const AddExpense = ({ onAdd }) => {
     {/*const [id, setId] = useState('')*/}
@@ -7,10 +8,37 @@ const AddExpense = ({ onAdd }) => {
     const [name, setName] = useState('')
     const [description, setDescription] = useState('')
     const [amount, setAmount] = useState('')
-    const [createdAt, setCreatedAt] = useState('')
     const [createdBy, setCreatedBy] = useState('')
-    const [updatedAt, setUpdatedAt] = useState('')
     const [updatedBy, setUpdatedBy] = useState('')
+
+
+
+    const add = async expense => {
+        const config = {  
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+        try {
+          const res = await axios.post('http://localhost:5000/expenses', expense, config);
+          console.log(res.data);
+        } catch (err) {
+          console.log(err);
+        }
+    }
+    
+    const onSubmit = (e) => {
+        e.preventDefault()
+        add({ projectId, categoryId, name, description, amount, createdBy, updatedBy });
+        setProjectId('');
+        setCategoryId('');
+        setName('');
+        setDescription('');
+        setAmount('');
+        setCreatedBy('');
+        setUpdatedBy('');
+    }
 
     return (
         <form 
@@ -63,32 +91,12 @@ const AddExpense = ({ onAdd }) => {
           </div>
 
           <div>
-            <label>Created at: </label>
-              <input
-              type='text'
-              placeholder='yyyymmdd 00:00:00'
-              value={createdAt}
-              onChange={(e) => setCreatedAt(e.target.value)}
-              />
-          </div>
-
-          <div>
             <label>Created by: </label>
               <input
               type='text'
               placeholder='Add user name'
               value={createdBy}
               onChange={(e) => setCreatedBy(e.target.value)}
-              />
-          </div>
-
-          <div>
-            <label>Updated at: </label>
-              <input
-              type='text'
-              placeholder='yyyymmdd 00:00:00'
-              value={updatedAt}
-              onChange={(e) => setUpdatedAt(e.target.value)}
               />
           </div>
 
