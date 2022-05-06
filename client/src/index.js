@@ -7,6 +7,7 @@ import Signin from './Signin';
 // import Register from './Register';
 import { ChakraProvider } from '@chakra-ui/react'
 import AddExpense from './AddExpense';
+import ExpensesRenderer from './ExpensesRender';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -17,7 +18,7 @@ root.render(
       <Route path="/*" element={<App />} />
         <Route path="/Signin" element={<Signin />} />
         <Route path="/addExpense" element={<AddExpense />} />
-        <Route path="/showExpenses/:id" element={<AddExpense />} />
+        <Route path="/project/:id" element={<ExpensesRenderer />} />
         {/* <Route path="/Register" element={<Register />} /> */}
       </Routes>
     </BrowserRouter>

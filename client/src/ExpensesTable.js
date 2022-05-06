@@ -9,7 +9,7 @@ import { useTable, useSortBy } from 'react-table'
 import MaterialTable from 'material-table'
 import axios from 'axios';
 
-function ProjectTable(props) {
+function ExpensesTable(props) {
     const navigate = useNavigate();
 
 
@@ -69,7 +69,7 @@ function ProjectTable(props) {
 
   return (
   <>
-    <Heading sx={{pl:10,pt:10, pb:10}}>Projects Page</Heading>
+    <Heading sx={{pl:10,pt:10, pb:10}}>All Expenses for this project</Heading>
     <Box sx={{m:15,maxWidth:"70%"}}>
     <table {...getTableProps()} style={{ border: 'solid 1px blue' }}>
        <thead>
@@ -122,4 +122,4 @@ function ProjectTable(props) {
   );
 }
 
-export default ProjectTable;
+export default ExpensesTable;

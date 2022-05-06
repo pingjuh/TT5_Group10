@@ -8,9 +8,9 @@ const Expense =  require('../models/Expense')
 // @desc      Get all project expenses
 // @access    Public
 
-router.get('/', async (req, res) => {
+router.post('/get', async (req, res) => {
   try {
-    const expenses = await Expense.find();
+    const expenses = await Expense.find({project_id:req.body.project_id});
     res.json(expenses);
   } catch (err) {
     console.error(err.message);
