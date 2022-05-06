@@ -3,13 +3,13 @@ import axios from 'axios'
 
 const AddExpense = ({ onAdd }) => {
     {/*const [id, setId] = useState('')*/}
-    const [projectId, setProjectId] = useState('')
-    const [categoryId, setCategoryId] = useState('')
+    const [project_id, setProjectId] = useState('')
+    const [category_id, setCategoryId] = useState('')
     const [name, setName] = useState('')
     const [description, setDescription] = useState('')
     const [amount, setAmount] = useState('')
-    const [createdBy, setCreatedBy] = useState('')
-    const [updatedBy, setUpdatedBy] = useState('')
+    const [created_by, setCreatedBy] = useState('')
+    const [updated_by, setUpdatedBy] = useState('')
 
 
 
@@ -29,7 +29,7 @@ const AddExpense = ({ onAdd }) => {
     
     const onSubmit = (e) => {
         e.preventDefault()
-        add({ projectId, categoryId, name, description, amount, createdBy, updatedBy });
+        add({ project_id, category_id, name, description, amount, created_by, updated_by })
         setProjectId('');
         setCategoryId('');
         setName('');
@@ -46,14 +46,24 @@ const AddExpense = ({ onAdd }) => {
           <div>
             <label>Id</label>
           </div>
-          
+
           <div>
             <label>ProjectID: </label>
               <input
               type='text'
-              placeholder='Add ProjectID'
-              value={projectId}
+              placeholder='Add Project ID'
+              value={project_id}
               onChange={(e) => setProjectId(e.target.value)}
+              />
+          </div>
+
+          <div>
+            <label>Category ID: </label>
+              <input
+              type='text'
+              placeholder='Add Category ID'
+              value={category_id}
+              onChange={(e) => setCategoryId(e.target.value)}
               />
           </div>
 
@@ -92,7 +102,7 @@ const AddExpense = ({ onAdd }) => {
               <input
               type='text'
               placeholder='Add user name'
-              value={createdBy}
+              value={created_by}
               onChange={(e) => setCreatedBy(e.target.value)}
               />
           </div>
@@ -102,7 +112,7 @@ const AddExpense = ({ onAdd }) => {
               <input
               type='text'
               placeholder='Add user name'
-              value={updatedBy}
+              value={updated_by}
               onChange={(e) => setUpdatedBy(e.target.value)}
               />
           </div>
