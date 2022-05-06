@@ -51,9 +51,9 @@ const Home = () => {
                 <ButtonGroup sx={{ mt: 3, mb: 2 }} variant="contained">
                   <Button onClick={()=>{navigate('/signin')}}>Sign in</Button>
                 </ButtonGroup>
-                {/* <ButtonGroup sx={{ mt: 1, mb: 2 }} variant="contained"> */}
-                {/* <Button onClick={()=>{navigate('/register')}}>Register</Button> */}
-                {/* </ButtonGroup>   */}
+                <ButtonGroup sx={{ mt: 1, mb: 2 }} variant="contained"> 
+                <Button onClick={()=>{navigate('/register')}}>Register</Button>
+                </ButtonGroup>  
             </Grid>
           </Grid>
       </Grid>
