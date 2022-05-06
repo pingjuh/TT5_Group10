@@ -62,6 +62,9 @@ function NavBar(props){
           <Button bg="transparent" border="0px"  onClick={()=>{navigate('/projects')}}>
           Projects
           </Button>
+          <Button bg="transparent" border="0px"  onClick={()=>{navigate('/addExpense')}}>
+            Add Expense 
+          </Button>
           <Button bg="transparent" border="1px" ml={3} onClick={()=>{
             localStorage.clear();
             navigate('/home')

@@ -13,7 +13,9 @@ const AddExpense = ({ onAdd }) => {
     const [updatedBy, setUpdatedBy] = useState('')
 
     return (
-        <form onSubmit={onSubmit}>
+        <form 
+        // onSubmit={onSubmit}
+        >
           <div>
             <label>Id</label>
           </div>

@@ -32,7 +32,7 @@ router.get('/', function(req, res, next) {
         const userid = req.body.id // replace with userid.id and uncomment middleware for jwt auth.
         console.log(req.user)
         console.log(userid.id)
-        const projects = await Projects.find({id: userid})
+        const projects = await Projects.find({user_id: userid})
         console.log(projects)
         return res.send(projects)
       }catch (err) {
