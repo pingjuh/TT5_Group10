@@ -2,7 +2,7 @@ import { useState } from 'react'
 import axios from 'axios'
 
 const AddExpense = ({ onAdd }) => {
-    {/*const [id, setId] = useState('')*/}
+    const [id, setId] = useState('')
     const [project_id, setProjectId] = useState('')
     const [category_id, setCategoryId] = useState('')
     const [name, setName] = useState('')
@@ -44,7 +44,13 @@ const AddExpense = ({ onAdd }) => {
           onSubmit={onSubmit}
         >
           <div>
-            <label>Id</label>
+            <label>ID: </label>
+              <input
+              type='text'
+              placeholder='Add ID'
+              value={id}
+              onChange={(e) => setId(e.target.value)}
+              />
           </div>
 
           <div>
