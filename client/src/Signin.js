@@ -73,6 +73,7 @@ const Signin = () => {
                     autoComplete="off"
                     onChange={(e) => setUser(e.target.value)}
                     value={user}
+                    placeholder="Enter your username"
                     required 
                 />
 
@@ -82,6 +83,7 @@ const Signin = () => {
                     id="password"
                     onChange={(e) => setPw(e.target.value)}
                     value={pw}
+                    placeholder="Enter your password"
                     required 
                 />
 

@@ -21,8 +21,7 @@ const AddExpense = ({ onAdd }) => {
             }
         }
         try {
-          const res = await axios.post('http://localhost:5000/expenses', expense, config);
-          console.log(res.data);
+          const res = await axios.post('http://localhost:3001/expenses', expense, config);
         } catch (err) {
           console.log(err);
         }
@@ -42,22 +41,20 @@ const AddExpense = ({ onAdd }) => {
 
     return (
         <form 
-        // onSubmit={onSubmit}
+          onSubmit={onSubmit}
         >
           <div>
             <label>Id</label>
           </div>
-
+          
           <div>
-            <label for="projectId">Project Id</label>
-            <select projectId="projectId">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-            </select>
+            <label>ProjectID: </label>
+              <input
+              type='text'
+              placeholder='Add ProjectID'
+              value={projectId}
+              onChange={(e) => setProjectId(e.target.value)}
+              />
           </div>
 
           <div>
@@ -112,6 +109,7 @@ const AddExpense = ({ onAdd }) => {
 
           <input type='submit' value='Save Expense' />
     </form>
+
   )
 }
 
