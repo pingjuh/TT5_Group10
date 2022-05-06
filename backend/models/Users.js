@@ -4,7 +4,8 @@ const UserSchema = mongoose.Schema({
   id: {
     type: Number,
     required: true,
-  },username: {
+  },
+  username: {
     type: String,
     required: true,
   },
