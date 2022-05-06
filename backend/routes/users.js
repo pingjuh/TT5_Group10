@@ -25,8 +25,6 @@ router.post('/login', async function(req, res, next) {
           message: "Error",
         });
       }
-    
-    
   });
 
   router.get('/addUser', async function(req, res, next) {
