@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const CategorySchema = mongoose.Schema({
   id: {
-    type: String,
+    type: Number,
     required: true,
   },
   name: {
@@ -11,4 +11,4 @@ const CategorySchema = mongoose.Schema({
   }
 });
 
-module.exports = moongoose.model("categorys", CategorySchema);
+module.exports = moongoose.model("category", CategorySchema);
